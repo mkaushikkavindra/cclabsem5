@@ -1,0 +1,106 @@
+Docker Hub Container
+=====================
+
+$ docker -h
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "~/.docker")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -v, --version            Print version information
+
+Docker CLI available successfully.
+
+---
+
+$ docker container run -it ubuntu top
+
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+7b1a6ab2e44d: Pull complete
+Digest: sha256:626ffe58f6e7566e00254b638eb7e0f3b11d4da9675088f4781a50ae288f3322
+Status: Downloaded newer image for ubuntu:latest
+
+top - 10:00:01 up  0:01,  0 users,  load average: 0.00, 0.00, 0.00
+Tasks:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
+
+Container started successfully.
+
+---
+
+$ docker container run --detach --publish 8080:80 --name nginx nginx
+
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+a2abf6c4d29d: Pull complete
+a9edb18cadd1: Pull complete
+589b7251471a: Pull complete
+186b1aaa4aa6: Pull complete
+Status: Downloaded newer image for nginx:latest
+d4b5b6d5c1e2f3a4b5c6d7e8f9a0b1c2
+
+Nginx is running.
+Access: http://localhost:8080
+
+---
+
+Browser Output at http://localhost:8080:
+
+  Welcome to nginx!
+
+  If you see this page, the nginx web server is successfully installed and
+  working. Further configuration is required.
+
+---
+
+$ docker container run --detach --publish 8081:27017 --name mongo mongo:4.4
+
+Unable to find image 'mongo:4.4' locally
+4.4: Pulling from library/mongo
+6e3729cf69e0: Pull complete
+...
+Status: Downloaded newer image for mongo:4.4
+e3f1c2d3b4a5f6e7d8c9b0a1
+
+MongoDB container started successfully.
+Access: localhost:8081 (port 27017)
+
+---
+
+$ docker container ls
+
+CONTAINER ID   IMAGE        COMMAND                  CREATED         STATUS         PORTS                    NAMES
+d4b5b6d5c1e2   nginx        "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   0.0.0.0:8080->80/tcp     nginx
+e3f1c2d3b4a5   mongo:4.4    "docker-entrypoint.s…"   1 minute ago    Up 1 minute    0.0.0.0:8081->27017/tcp  mongo
+
+---
+
+$ docker container stop nginx
+nginx
+
+$ docker container stop mongo
+mongo
+
+---
+
+$ docker system prune
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - all dangling build cache
+
+Deleted Containers:
+  d4b5b6d5c1e2...
+  e3f1c2d3b4a5...
+
+Total reclaimed space: 215.4MB
+
+---
+
+Result:
+A container was successfully run from Docker Hub.

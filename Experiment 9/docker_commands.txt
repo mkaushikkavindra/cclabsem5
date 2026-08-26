@@ -1,0 +1,92 @@
+Docker Hub – Run Containers
+============================
+
+Experiment 9: Running Containers from Docker Hub
+
+---
+
+COMMAND 1: Docker Help
+-----------------------
+docker -h
+
+Shows all available Docker CLI commands and options.
+
+---
+
+COMMAND 2: Run Ubuntu Container (Interactive)
+----------------------------------------------
+docker container run -it ubuntu top
+
+Flags:
+  -i  : Interactive mode (keeps STDIN open)
+  -t  : Allocates a pseudo-TTY (terminal)
+
+Downloads ubuntu:latest from Docker Hub (if not cached) and runs the
+"top" command (process viewer) inside the Ubuntu container.
+
+---
+
+COMMAND 3: Run Nginx Web Server Container
+------------------------------------------
+docker container run --detach --publish 8080:80 --name nginx nginx
+
+Flags:
+  --detach        : Run container in the background (detached mode)
+  --publish 8080:80 : Map host port 8080 → container port 80
+  --name nginx    : Name the container "nginx"
+
+Access in browser:
+  http://localhost:8080
+
+Expected browser output:
+  Welcome to nginx!
+
+---
+
+COMMAND 4: Run MongoDB Container
+----------------------------------
+docker container run --detach --publish 8081:27017 --name mongo mongo:4.4
+
+Flags:
+  --detach            : Background mode
+  --publish 8081:27017 : Host port 8081 → MongoDB default port 27017
+  --name mongo        : Name the container "mongo"
+  mongo:4.4           : Use MongoDB version 4.4
+
+---
+
+COMMAND 5: List Running Containers
+------------------------------------
+docker container ls
+
+Shows all currently running containers with their IDs, names, ports.
+
+---
+
+COMMAND 6: Stop a Container
+-----------------------------
+docker container stop [container_id]
+
+Replace [container_id] with the actual ID from "docker container ls".
+Example: docker container stop a1b2c3d4e5f6
+
+---
+
+COMMAND 7: Clean Up Stopped Containers and Images
+---------------------------------------------------
+docker system prune
+
+WARNING: This removes all stopped containers, dangling images,
+         unused networks, and build cache.
+
+---
+
+ADDITIONAL USEFUL COMMANDS:
+-----------------------------
+docker container ls -a        # List all containers (running + stopped)
+docker container rm <id>      # Remove a stopped container
+docker image ls               # List all local images
+docker image rm <image>       # Remove an image
+docker container logs nginx   # View logs for the nginx container
+docker container stop nginx   # Stop nginx container
+docker container stop mongo   # Stop mongo container
