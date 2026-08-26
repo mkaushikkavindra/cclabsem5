@@ -1,0 +1,35 @@
+Google App Engine Hello World
+==============================
+
+Project: HelloWorld
+
+[INFO] Starting Google App Engine development server...
+[INFO] Scanning for JSPs...
+[INFO] Scanning files for URLStreamHandlers...
+
+Server started successfully.
+
+Local Development Server:
+  http://localhost:8888/
+
+Application URL (Servlet):
+  http://localhost:8888/helloworld
+
+---
+
+Browser Output at http://localhost:8888/helloworld:
+
+  Hello, world
+
+---
+
+Browser Output at http://localhost:8888/:
+
+  Google App Engine – Hello World
+  Welcome to the Cloud Computing Lab – Experiment 3
+  [Link: Click here for Hello World Servlet]
+
+---
+
+Result:
+Google App Engine Hello World web application was created and executed successfully.
