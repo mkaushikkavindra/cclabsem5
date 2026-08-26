@@ -1,0 +1,79 @@
+VirtualBox Installation and Virtual Machine Configuration
+==========================================================
+
+PART A: INSTALLING VIRTUALBOX ON WINDOWS
+-----------------------------------------
+
+Step 1: Visit the official VirtualBox website.
+        URL: https://www.virtualbox.org/
+
+Step 2: Navigate to Downloads and select "Windows hosts".
+        Download the VirtualBox installer (.exe file).
+
+Step 3: Open the downloaded EXE file to start the installation wizard.
+
+Step 4: Click "Next" on the Welcome screen.
+
+Step 5: Choose the installation folder (default recommended):
+        C:\Program Files\Oracle\VirtualBox\
+
+Step 6: Select required features (all features selected by default):
+        - VirtualBox Application
+        - VirtualBox USB Support
+        - VirtualBox Networking
+        - VirtualBox Python Support
+
+Step 7: A warning may appear: "Network Interfaces"
+        Click "Yes" to allow Oracle VirtualBox to install network interfaces.
+
+Step 8: Click "Install" to begin the installation.
+        Allow User Account Control (UAC) if prompted.
+
+Step 9: Click "Finish" once installation is complete.
+        Optionally check "Start Oracle VM VirtualBox after installation".
+
+Step 10: VirtualBox Manager opens successfully.
+
+---
+
+PART B: CREATING A VIRTUAL MACHINE (Guest OS: Windows 98)
+-----------------------------------------------------------
+
+Step 11: In VirtualBox Manager, click "New".
+
+Step 12: Configure the virtual machine:
+         Name:              Windows 98
+         Machine Folder:    C:\Users\<username>\VirtualBox VMs
+         ISO Image:         windows98.iso (browse and select)
+         Type:              Microsoft Windows
+         Version:           Windows 98
+
+Step 13: Allocate hardware resources:
+         Base Memory (RAM): 512 MB
+         Processor (CPU):   1
+
+Step 14: Create a Virtual Hard Disk:
+         Disk Size:         2.00 GB
+         File Type:         VDI (VirtualBox Disk Image)
+         Storage:           Dynamically allocated
+
+Step 15: Review the summary and click "Finish".
+
+Step 16: Select the newly created VM and click "Start".
+
+Step 17: The VM boots from the ISO image.
+         Follow on-screen instructions to complete the Windows 98 installation.
+
+Step 18: After installation, the guest OS (Windows 98) desktop loads inside VirtualBox.
+
+---
+
+TOOLS USED:
+-----------
+- Oracle VM VirtualBox (latest version)
+- Windows 98 ISO image
+
+RESULT:
+-------
+VirtualBox was installed successfully on the host machine (Windows 8 or above),
+and a virtual machine running Windows 98 as the guest OS was created and started.

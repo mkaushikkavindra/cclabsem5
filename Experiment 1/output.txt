@@ -1,0 +1,38 @@
+VirtualBox Installation
+=======================
+
+[INFO] Starting Oracle VM VirtualBox Setup Wizard...
+[INFO] Extracting installation files...
+[INFO] Installing VirtualBox application files...
+[INFO] Installing VirtualBox USB drivers...
+[INFO] Installing VirtualBox Networking (Host-Only Adapter)...
+[INFO] Installing VirtualBox Python support...
+[INFO] Registering application with Windows...
+
+VirtualBox installed successfully.
+
+---
+
+Virtual Machine Configuration
+------------------------------
+
+Name          : Windows 98
+Type          : Microsoft Windows
+Version       : Windows 98
+Base Memory   : 512 MB
+Processors    : 1 CPU
+Disk Size     : 2.00 GB (VDI, Dynamically Allocated)
+ISO Image     : windows98.iso
+
+[INFO] Virtual machine "Windows 98" created successfully.
+[INFO] Starting virtual machine...
+[INFO] Booting from ISO image...
+[INFO] Windows 98 Setup loading...
+[INFO] Completing guest OS installation...
+
+Windows 98 desktop loaded successfully.
+
+---
+
+Result:
+VirtualBox installation and guest operating system installation completed successfully.
