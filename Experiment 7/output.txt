@@ -1,0 +1,111 @@
+Hadoop Single Node Cluster
+==========================
+
+$ sudo apt-get update
+Hit:1 http://archive.ubuntu.com/ubuntu trusty InRelease
+Reading package lists... Done
+
+$ sudo apt-get install openjdk-7-jdk
+Reading package lists... Done
+Setting up openjdk-7-jdk (7u79-2.5.6-0ubuntu1.14.04.1) ...
+
+$ java -version
+java version "1.7.0_79"
+OpenJDK Runtime Environment (IcedTea 2.5.6) (7u79-2.5.6-0ubuntu1.14.04.1)
+OpenJDK 64-Bit Server VM (build 24.79-b02, mixed mode)
+
+---
+
+$ apt-get install openssh-server
+Reading package lists... Done
+Setting up openssh-server (1:6.6p1-2ubuntu2.13) ...
+
+SSH server installed successfully.
+
+$ ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
+Generating public/private rsa key pair.
+Your identification has been saved in /home/hadoop/.ssh/id_rsa.
+Your public key has been saved in /home/hadoop/.ssh/id_rsa.pub.
+
+---
+
+$ sudo addgroup hadoop
+Adding group 'hadoop' (GID 1001) ...
+Done.
+
+$ sudo adduser --ingroup hadoop hadoop
+Adding user 'hadoop' ...
+New password: (hidden)
+passwd updated successfully.
+
+Hadoop user created: hadoop
+
+---
+
+$ sudo tar -xzvf hadoop-2.7.0.tar.gz -C /usr/local/lib/
+hadoop-2.7.0/
+hadoop-2.7.0/bin/
+hadoop-2.7.0/etc/
+...
+Extraction complete.
+
+$ sudo chown -R hadoop:hadoop /usr/local/lib/hadoop-2.7.0
+
+Hadoop installation:
+  Hadoop 2.7.0 installed at /usr/local/lib/hadoop-2.7.0
+
+---
+
+HDFS directories:
+
+$ sudo mkdir -p /var/lib/hadoop/hdfs/namenode
+$ sudo mkdir -p /var/lib/hadoop/hdfs/datanode
+$ sudo chown -R hadoop /var/lib/hadoop
+
+  NameNode : /var/lib/hadoop/hdfs/namenode
+  DataNode : /var/lib/hadoop/hdfs/datanode
+
+---
+
+Environment configured in ~/.bashrc:
+
+  JAVA_HOME    = /usr/lib/jvm/java-7-openjdk-amd64
+  HADOOP_INSTALL = /usr/local/lib/hadoop-2.7.0
+  PATH updated with Hadoop bin and sbin.
+
+$ source ~/.bashrc
+
+$ hadoop version
+Hadoop 2.7.0
+...
+
+---
+
+$ hdfs namenode -format
+STARTUP_MSG: Starting NameNode
+...
+Storage directory /var/lib/hadoop/hdfs/namenode has been successfully formatted.
+
+$ start-dfs.sh
+Starting namenodes on [localhost]
+localhost: starting namenode
+localhost: starting datanode
+Starting secondary namenodes [0.0.0.0]
+
+$ start-yarn.sh
+starting yarn daemons
+starting resourcemanager
+localhost: starting nodemanager
+
+$ jps
+1234 NameNode
+1456 DataNode
+1678 SecondaryNameNode
+1890 ResourceManager
+2012 NodeManager
+2234 Jps
+
+---
+
+Result:
+The procedure for setting up a one-node Hadoop cluster was completed successfully.
