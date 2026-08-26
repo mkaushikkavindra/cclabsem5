@@ -1,0 +1,25 @@
+$ tce-load -wi compiletc
+Downloading compiletc.tcz...
+Connecting to repo.tinycorelinux.net
+compiletc.tcz         100% |*********************| 18.2M  0:00:05 ETA
+compiletc.tcz: OK
+
+Compiler installed successfully.
+
+---
+
+$ cc demo.c
+
+(Compiled without errors — output binary: a.out)
+
+---
+
+$ ./a.out
+
+Enter year: 1991
+1991 is not a Leap Year
+
+---
+
+Result:
+C compiler was installed in the virtual machine and the C program was executed successfully.
