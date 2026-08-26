@@ -1,0 +1,104 @@
+Virtual Machine File Transfer – Procedure
+==========================================
+
+AIM:
+To find a procedure to transfer files from one virtual machine to another virtual machine.
+
+The following three methods are described using Oracle VM VirtualBox.
+
+========================================================
+METHOD 1: DRAG AND DROP (Copy and Paste)
+========================================================
+
+Prerequisite:
+- VirtualBox Guest Additions must be installed in the guest OS.
+  (Devices → Insert Guest Additions CD Image → Install)
+
+Steps:
+1. Start the virtual machine in VirtualBox.
+2. In the VirtualBox menu, click "Devices".
+3. Select "Drag and Drop".
+4. Choose one of the following options:
+   - Disabled      – No drag-and-drop allowed.
+   - Host to Guest – Drag files from host into the VM.
+   - Guest to Host – Drag files from the VM to the host.
+   - Bidirectional – Both directions allowed.
+5. Select "Bidirectional" for full flexibility.
+6. On the host machine, open File Explorer.
+7. Drag the desired file (e.g., sample.txt) and drop it into the VM window.
+8. The file appears inside the guest OS.
+
+To transfer from VM1 to VM2:
+- Enable shared clipboard/drag-and-drop on both VMs.
+- Use the host as an intermediary:
+  VM1 → Host (Guest to Host)
+  Host → VM2 (Host to Guest)
+
+========================================================
+METHOD 2: USB DRIVE
+========================================================
+
+Prerequisite:
+- VirtualBox Extension Pack must be installed.
+  (Download from https://www.virtualbox.org/ → Extension Pack)
+  Install via: File → Preferences → Extensions → Add
+
+Steps:
+1. Connect a USB drive to the host machine.
+2. In VirtualBox, select the virtual machine.
+3. Go to Settings → USB.
+4. Enable USB Controller (USB 2.0 or USB 3.0).
+5. Click the "+" icon to add a USB device filter.
+6. Select the connected USB drive from the list.
+7. Click OK.
+8. Start (or restart) the virtual machine.
+9. The USB drive is now accessible inside the guest OS.
+10. Copy the desired file to the USB drive inside VM1.
+11. Eject the USB from VM1 (Settings → USB → Remove device).
+12. Attach the USB to VM2 (Settings → USB → Add device).
+13. Access the USB inside VM2 and copy the file.
+
+========================================================
+METHOD 3: SHARED FOLDER (Network Share)
+========================================================
+
+Prerequisites:
+- VirtualBox Guest Additions installed in guest OS.
+- A folder created on the host machine (e.g., C:\VMShare\).
+
+Steps:
+1. In VirtualBox, select the virtual machine.
+2. Go to Settings → Shared Folders.
+3. Click the "+" icon to add a new shared folder.
+4. Configure:
+   Folder Path:  C:\VMShare\        (host folder)
+   Folder Name:  VMShare
+   Auto-mount:   Enabled (check)
+   Make Permanent: Enabled (check)
+5. Click OK.
+6. Start the virtual machine.
+7. Inside the guest OS (Linux), the folder is mounted at:
+   /media/sf_VMShare/
+8. Inside the guest OS (Windows), it appears as a network drive (e.g., Z:\).
+
+To transfer between VM1 and VM2:
+- Both VMs can access the same shared folder on the host.
+- VM1 copies the file to: /media/sf_VMShare/sample.txt
+- VM2 reads the file from: /media/sf_VMShare/sample.txt
+
+Alternative – Network Transfer:
+- Find the IP address of VM1:  ifconfig (Linux) or ipconfig (Windows)
+- Use SCP/FTP/SMB to transfer files between VMs over the virtual network.
+
+========================================================
+SUMMARY TABLE
+========================================================
+
+| Method         | Tool Required           | Speed  | Notes                        |
+|----------------|------------------------|--------|------------------------------|
+| Drag and Drop  | Guest Additions        | Medium | Simple; uses host clipboard  |
+| USB Drive      | Extension Pack + USB   | High   | Physical media required      |
+| Shared Folder  | Guest Additions        | High   | Best for repeated transfers  |
+
+Result:
+All three file transfer methods between virtual machines were documented and verified.

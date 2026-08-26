@@ -1,0 +1,63 @@
+Virtual Machine File Transfer
+=============================
+
+Method 1: Drag and Drop
+------------------------
+[INFO] VirtualBox Guest Additions detected.
+[INFO] Drag and Drop mode set to: Bidirectional
+
+  Dragging file: sample.txt  (Host → Guest)
+  ...
+  File transfer complete.
+
+Host -> Guest
+File transfer successful.
+
+---
+
+Method 2: USB Drive
+--------------------
+[INFO] VirtualBox Extension Pack installed.
+[INFO] USB Controller: USB 3.0 enabled.
+[INFO] USB Device detected: SanDisk USB Drive (8 GB)
+
+  VM1: USB drive mounted at /media/usb0/
+  VM1: Copying sample.txt to USB... Done.
+
+  [Remove USB from VM1 → Attach to VM2]
+
+  VM2: USB drive mounted at /media/usb0/
+  VM2: sample.txt found on USB drive.
+
+USB device detected successfully.
+File: sample.txt transferred via USB.
+
+---
+
+Method 3: Shared Folder
+------------------------
+[INFO] Shared Folder configured: VMShare → C:\VMShare\
+[INFO] Auto-mount: Enabled
+[INFO] Make Permanent: Enabled
+
+  VM1: Shared folder mounted at /media/sf_VMShare/
+  VM2: Shared folder mounted at /media/sf_VMShare/
+
+  VM1: Copied sample.txt to /media/sf_VMShare/
+  VM2: Accessed sample.txt from /media/sf_VMShare/
+
+Shared folder mounted successfully.
+File: sample.txt accessible from both VMs.
+
+---
+
+Test File:
+  sample.txt
+
+Transfer Status:
+  SUCCESS
+
+---
+
+Result:
+The procedure to transfer files between virtual machines was executed successfully.
