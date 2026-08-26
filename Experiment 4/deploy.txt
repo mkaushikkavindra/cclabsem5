@@ -1,0 +1,41 @@
+GAE Deployment Commands
+========================
+
+STEP 1: Authenticate with Google Cloud
+---------------------------------------
+gcloud auth login
+
+STEP 2: Set your project
+-------------------------
+gcloud config set project YOUR_PROJECT_ID
+
+STEP 3: Deploy the application
+--------------------------------
+gcloud app deploy
+
+(Run from the project root directory where app.yaml is located)
+
+STEP 4: Open the application in browser
+-----------------------------------------
+gcloud app browse
+
+This will open:
+  https://YOUR_PROJECT_ID.appspot.com/
+
+---
+
+LOCAL DEVELOPMENT SERVER (GAE SDK):
+-------------------------------------
+To run locally before deploying:
+
+  dev_appserver.py app.yaml
+
+Local URL:
+  http://localhost:8080/
+
+---
+
+Notes:
+- Ensure Google Cloud SDK is installed and configured.
+- The app.yaml must be in the project root.
+- The www/ folder must contain index.html and static assets.

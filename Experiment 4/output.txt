@@ -1,0 +1,60 @@
+GAE Launcher
+============
+
+Application configured successfully.
+
+Files:
+  app.yaml
+  www/index.html
+  www/css/style.css
+
+---
+
+Local Development Server:
+$ dev_appserver.py app.yaml
+
+INFO     2024-01-01 10:00:00,000 devappserver2.py] Skipping SDK update check.
+INFO     Starting API server at: http://localhost:38011
+INFO     Starting module "default" running at: http://localhost:8080
+INFO     Starting admin server at: http://localhost:8000
+
+Local server running at: http://localhost:8080/
+
+---
+
+Deployment:
+$ gcloud app deploy
+
+Services to deploy:
+  descriptor:      [app.yaml]
+  source:          [/path/to/project]
+  target project:  [your-project-id]
+  target service:  [default]
+  target version:  [auto]
+
+Do you want to continue (Y/n)? Y
+
+Updating service [default]...done.
+Deployed service [default] to [https://your-project-id.appspot.com]
+
+Deployment completed successfully.
+
+---
+
+Launch:
+$ gcloud app browse
+
+Opening [https://your-project-id.appspot.com] in a new tab in your default browser.
+
+---
+
+Browser Output:
+
+  Hello, world!
+
+  This is a simple static HTML file that will be served from Google App Engine.
+
+---
+
+Result:
+The web application was successfully launched using the GAE workflow.
